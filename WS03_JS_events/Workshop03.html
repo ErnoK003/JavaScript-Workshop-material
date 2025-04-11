@@ -81,7 +81,7 @@
           <li>When the form button is clicked, check if the textarea is empty. Notify the user with appropriate message. HINT: You can access the Textarea using the following command:   <i>document.getElementById("textdata").value</i>. We will study the forms deeper in Workshops 4 and 5.</li>
         </ul>
         <form>
-            <textarea id="textdata" onfocus="onfocused()"></textarea><br>
+            <textarea id="textdata" onfocus="onfocused()" onkeyup="countKeypresses()"></textarea><br>
             <span id="charcount"></span>
             <button onclick="empty()">Send me</button>
         </form>
@@ -91,47 +91,14 @@
         <p>Add onMouseMove -event to the DIV-element above. When you move mouse over the DIV (rectangle) the program should output the coordinates of your pointer. Try first outputting to the console using console.log.</p>
         <p> When the program is working, you can try outputting the text on the H2 element with an id "coords" the box</p> 
         <p>HINT: You need to use document.getElementById("coordinates").innerHTML to achieve this.</p>
+        <div id="taulu"></div>
         <script>
             function klikkaus() {
                 alert("You clicked me!"+Date());
             }
             function showTable() {
-                document.write("<table id='example' class='display'>");
-                document.write("<thead>");
-                document.write("<tr>");
-                document.write("<th>Name</th>");
-                document.write("<th>Position</th>");
-                document.write("<th>Salary</th>");
-                document.write("</tr>");
-                document.write("</thead>");
-                document.write("<tbody>");
-                document.write("<tr>");
-                document.write("<td>Tiger Nixon</td>");
-                document.write("<td>System Architect</td>");
-                document.write("<td>$320,800</td>");
-                document.write("</tr>");
-                document.write("<tr>");
-                document.write("<td>Garrett Winters</td>");
-                document.write("<td>Accountant</td>");
-                document.write("<td>$170,750</td>");
-                document.write("</tr>");
-                document.write("<tr>");
-                document.write("<td>Ashton Cox</td>");
-                document.write("<td>Junior Technical Author</td>");
-                document.write("<td>$86,000</td>");
-                document.write("</tr>");
-                document.write("<tr>");
-                document.write("<td>Cedric Kelly</td>");
-                document.write("<td>Senior Javascript Developer</td>");
-                document.write("<td>$433,060</td>");
-                document.write("</tr>");
-                document.write("<tr>");
-                document.write("<td>Airi Satou</td>");
-                document.write("<td>Accountant</td>");
-                document.write("<td>$162,700</td>");
-                document.write("</tr>");              
-                document.write("</tbody>");
-                document.write("</table>");
+                var taulu = document.getElementById("example").outerHTML;
+                document.getElementById("taulu").innerHTML = taulu;
             }
             var x = ""
             function getLocation() {
@@ -164,6 +131,11 @@
                 if (x == "") {
                     alert("Please fill in the form with proper data.");
                 }
+            }
+            function countKeypresses() {
+                var input = document.getElementById("textdata").value;
+                var count = input.length;
+                document.getElementById("charcount").innerHTML = "Number of characters: " + count;
             }
         </script>
     </body>
