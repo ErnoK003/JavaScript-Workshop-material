@@ -68,7 +68,7 @@
 		  </select>
 		  <br>
 		  <br>
-		<img alt="" onmouseover="" onmouseout="" style="left: 0px; opacity: 1;" src="https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png" width="400" id="carimage"/>
+		<img alt="" onmouseover="addborder()" onmouseout="removeborder()" style="left: 0px; opacity: 1;" src="https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png" width="400" id="carimage"/>
 		<hr/>
 		<h2>Exercise 4: Moving things around</h2>
 		<ul>
@@ -178,24 +178,46 @@
 			}
 
 			function hide() {
-				const idme = document.getElementById('me')
-				idme.style.display = "none"       //piilotetaan elementti
+				const idme = document.getElementById('me')  //haetaan elementin id:n perusteella haluttu elementti
+				idme.style.display = "none"    //piilotetaan elementti
 			}
 
 			function show() {
     			const idme = document.getElementById('me')
-    			idme.style.display = "block"      //tuodaan elementti esiin
+    			idme.style.display = "block"   //tuodaan elementti esiin
 			}
 
 			function surprise() {
 				const elesurprise = document.getElementsByClassName('surprise')
-				Array.from(elesurprise).forEach((element) => {           //muuttaa elementit listaksi, jota pystyy muokkaamaan
+				Array.from(elesurprise).forEach((element) => {   //muuttaa elementit listaksi, jota pystyy muokkaamaan ja toteuttaa jokaiselle samat toimenpiteet
 					element.style.fontSize="20px"
 				});
 			}
 
 			function listopen() {
-				
+				const choise = document.getElementById('mySelect')
+				const choiseValue = choise.options[choise.selectedIndex].value  //hakee valitun vaihtoehdon tekstin
+				alert("You selected: " + choiseValue)   //näyttää alert-ikkunassa valitun vaihtoehdon
+				const carimage = document.getElementById('carimage')
+				if (choise.selectedIndex == 0) {        //jos valitaan ensimmäinen listasta (indeksi 0)
+					carimage.src = "https://www.bmw.fi/content/dam/bmw/common/all-models/m-series/m8-coupe/2022/navigation/bmw-8series-coupe-modellfinder.png"
+				} else if (choise.selectedIndex == 1) {    //jos valitaan toinen listasta (indeksi 1)
+					carimage.src = "https://mediaservice.audi.com/media/fast/H4sIAAAAAAAA_1vzloG1tIiBOTrayfuvpGh6-m1zJgaGigIGBgZGoDhTtNOaz-I_2DhCHsCEtzEwF-SlMwJZKUycmbmJ6an6QD4_I3taTmV-aUkxO0grD1PYHpd5ZTefm_P63n3csq5-8aal3AysQF2MN4AE8zQgwVcAJDilGcAkyLwDIKIJxGeyZ2ZgYK0AMiIZQICPr7QopyCxKDFXrzwzpSRDUMOASCDM7uIa4ujpEwwAzYQLnOkAAAA.webp"
+				} else if (choise.selectedIndex == 2) {    //jos valitaan kolmas listasta (indeksi 2)
+					carimage.src = "https://images.netdirector.co.uk/gforces-auto/image/upload/w_822,h_548,q_auto,c_fill,f_auto,fl_lossy/auto-client/d030108e176a4797c4854c9565a3b486/spectral_blue_metallic.png"
+				} else if (choise.selectedIndex == 3) {    //jos valitaan neljäs listasta (indeksi 3)
+					carimage.src = "https://wizz.volvocars.com/images/2026/539/exterior/studioProportional/left/transparent_exterior-studioProportional-left_89485F7EEDCC5D09F86985DA7DC52683A0096E12.png?client=car-config&w=1920&imdensity=1"
+				}
+			}
+
+			function addborder() {
+				const carimage = document.getElementById('carimage')   //haetaan elementin id:n perusteella haluttu elementti
+				carimage.style.border = "5px solid"
+			}
+
+			function removeborder() {
+				const carimage = document.getElementById('carimage')   //haetaan elementin id:n perusteella haluttu elementti
+				carimage.style.border = "none"
 			}
 		</script>
 	</body>
