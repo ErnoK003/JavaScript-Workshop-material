@@ -41,7 +41,7 @@
 			</label>
 			<br>
 			<label>
-				<input type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
+				<input onchange="surprise()" type="checkbox" name="CheckboxGroup1" value="3" id="CheckboxGroup1_2"> 
 				<span id="surpise">Surprise</span>
 			</label>
 		</p>
@@ -50,7 +50,7 @@
 		  <li>Second checkbox should return the visibility of the element to a normal state (block).</li>
 		  <li>Third checkbox should find the elements with class &quot;surprise&quot; and change the font size to 20.</li>
 		</ul>
-		<div id="me" class="red-box"></div>
+		<div id="me" class="red-box">test</div>
 		<p>&nbsp;</p>
 		<hr/>
 		<h2>Exercise 3: Images and pulldowns</h2>
@@ -157,7 +157,7 @@
 				const heading2s = document.querySelectorAll('h2')
 				heading2s.forEach((heading) => {        //käy läpi kaikki h2-elementit
 					if (heading.innerHTML.includes("Exercise 2")) {     //jos h2-elementin sisällä lukee "Exercise 2", ohjelma suorittaa tulevan koodin
-						heading.style.fontSize = "33px"
+						heading.style.fontSize = "33px"         //muutetaan halutun h2-elementin tyylejä
 						heading.style.color = "white"
 						heading.style.backgroundColor = "black"
 						heading.style.fontStyle = "italic"
@@ -175,6 +175,23 @@
 					document.body.style.backgroundColor = "gray"         //muutetaan koko dokumentin tausta harmaaksi
 					thirdfirsttime +=1
 				}
+			}
+
+			function hide() {
+				const idme = document.getElementById('me')
+				idme.style.display = "none"       //piilotetaan elementti
+			}
+
+			function show() {
+    			const idme = document.getElementById('me')
+    			idme.style.display = "block"      //tuodaan elementti esiin
+			}
+
+			function surprise() {
+				const elesurprise = document.getElementsByClassName('surprise')
+				Array.from(elesurprise).forEach((element) => {
+					element.style.fontSize="20px"
+				});
 			}
 		</script>
 	</body>
