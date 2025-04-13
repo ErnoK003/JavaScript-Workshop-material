@@ -15,8 +15,8 @@
 		<p>&nbsp;Below you will see three buttons. Edit the source code and add an onClick-events to these buttons. Use Developer Console to find the </p>
 		<p>
 		  <button onclick="changeHeading();">Button 1</button>
-		  <button onclick="secondButton">Button 2</button>
-		  <button onclick="">Button 3</button>
+		  <button onclick="secondButton()">Button 2</button>
+		  <button onclick="thirdButton()">Button 3</button>
 		</p>
 
 		<ul>
@@ -151,6 +151,30 @@
 		<script>
 			function changeHeading() {
 				document.querySelector('h1').innerHTML = "Modified Heading!"
+			}
+
+			function secondButton() {
+				const heading2s = document.querySelectorAll('h2')
+				heading2s.forEach((heading) => {        //käy läpi kaikki h2-elementit
+					if (heading.innerHTML.includes("Exercise 2")) {     //jos h2-elementin sisällä lukee "Exercise 2", ohjelma suorittaa tulevan koodin
+						heading.style.fontSize = "33px"
+						heading.style.color = "white"
+						heading.style.backgroundColor = "black"
+						heading.style.fontStyle = "italic"
+					}
+				})
+			}
+
+			var thirdfirsttime = 0
+			function thirdButton() {
+				if (thirdfirsttime <= 0) {       //mahdollistetaan vain yhden kerran painaminen
+					const paragraphs = document.querySelectorAll('p')      //hakee kaikki p-elementit, määrätään ne muuttujaan
+					const quote = ' "'+"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed posuere interdum sem. Quisque ligula eros ullamcorper quis, lacinia quis facilisis sed sapien. Mauris varius diam vitae arcu. Sed arcu lectus auctor vitae, consectetuer et venenatis eget velit."+'"'
+					paragraphs[3].innerHTML += "<em>"+quote+"</em>"        //lisätään 4. p-elementtiin (3. indeksi) sitaatti em-elementtinä (tekee italic-fonttityylin) ja logo
+					paragraphs[3].innerHTML += '<br><img src="https://webgroup184d413c946e.blob.core.windows.net/blobwebgroup184d413c946e/wp-content/uploads/2025/04/Logo-PNG-2.png" width="50" height="50">"'
+					document.body.style.backgroundColor = "gray"         //muutetaan koko dokumentin tausta harmaaksi
+					thirdfirsttime +=1
+				}
 			}
 		</script>
 	</body>
