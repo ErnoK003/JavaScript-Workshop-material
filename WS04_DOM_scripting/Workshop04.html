@@ -60,7 +60,7 @@
 				<li>When you have accomplished the above, change the image (id=&quot;carimage&quot;) below based on the users choice on the pulldown menu below. Find appropriate images from the web.
 			</ul>
 		  <p>Select a new car from the list.</p>
-		  <select name="mySelect" id="mySelect" onchange="">
+		  <select name="mySelect" id="mySelect" onchange="listopen()">
 			<option value="BMW">BMW         
 			<option value="Audi">Audi
 			<option value="Mercedes">Mercedes
@@ -189,9 +189,13 @@
 
 			function surprise() {
 				const elesurprise = document.getElementsByClassName('surprise')
-				Array.from(elesurprise).forEach((element) => {
+				Array.from(elesurprise).forEach((element) => {           //muuttaa elementit listaksi, jota pystyy muokkaamaan
 					element.style.fontSize="20px"
 				});
+			}
+
+			function listopen() {
+				
 			}
 		</script>
 	</body>
